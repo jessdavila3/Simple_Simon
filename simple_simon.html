@@ -9,10 +9,10 @@
 </head>
 <body class="container">
     <h1>Simple Simon</h1>
-            <button id="blue" class="tile"></button>
-            <button id="red" class="tile"></button>
-            <button id="orange" class="tile"></button>
-            <button id="yellow" class="tile"></button>
+            <button id="blue" class="tile" value="1"></button>
+            <button id="red" class="tile" value="2"></button>
+            <button id="orange" class="tile" value="3"></button>
+            <button id="yellow" class="tile" value="4"></button>
     </div>
 
 
@@ -25,14 +25,22 @@
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
-    var userArray = [];
-    var simonArray = [];
+    "use strict";
 
-    var blue = $("#blue");
-    blue.click(function() {
-        userArray.push(1);
-        console.log(userArray);
-    })
+    var game = {
+        userSeq: [],
+        simonSeq: [],
+        level: 1,
+        score: 0
+    };
+
+    function lightUp() {
+        console.log('lightup');
+    }
+    $('.tile').click(function() {
+        lightUp();
+        console.log($('this').value)
+    });
 
 </script>
 </body>
