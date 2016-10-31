@@ -9,11 +9,14 @@
 </head>
 <body class="container">
     <h1>Simple Simon</h1>
-            <button id="blue" class="tile" value="1"></button>
-            <button id="red" class="tile" value="2"></button>
-            <button id="orange" class="tile" value="3"></button>
-            <button id="yellow" class="tile" value="4"></button>
+    <div id="buttonDisplay">
+        <button id="blue" class="tile" value="1"></button>
+        <button id="red" class="tile" value="2"></button>
+        <button id="orange" class="tile" value="3"></button>
+        <button id="yellow" class="tile" value="4"></button>
     </div>
+    <h3 id="start">Start</h3>
+
 
 
 
@@ -27,20 +30,50 @@
 <script>
     "use strict";
 
+    var tiles = $('.tile');
+
     var game = {
         userSeq: [],
         simonSeq: [],
         level: 1,
-        score: 0
+        score: 0,
+        start: false
     };
 
-    function lightUp() {
-        console.log('lightup');
-    }
-    $('.tile').click(function() {
-        lightUp();
-        console.log($('this').value)
+    $("#start").click(function() {
+        game.start = true;
+        randomPad();
+        console.log(game.simonSeq);
     });
+
+    tiles.click(function() {
+        var tile = $(this);
+        var value = parseInt(this.value);
+        game.userSeq.push(value);
+        compare();
+
+    });
+
+    function randomPad() {
+        game.simonSeq.push(Math.floor(Math.random() * 4) + 1);
+    }
+
+    function compare() {
+        if (game.userSeq.length == game.simonSeq.length) {
+            if (game.userSeq[game.userSeq.length-1] == game.simonSeq[game.simonSeq.length-1]) {
+                game.level++;
+                console.log('equal');
+            }
+        }
+    }
+    tiles.hover(
+            function() {
+                $(this).css('opacity', '1');
+            },
+            function() {
+                $(this).css('opacity', '.5');
+            }
+    );
 
 </script>
 </body>
