@@ -54,7 +54,9 @@
     });
 
     function randomPad() {
-        game.simonSeq.push(Math.floor(Math.random() * 4) + 1);
+        var random = Math.floor(Math.random() * 4) + 1;
+        game.simonSeq.push(random);
+        lightUp(game.simonSeq);
         console.log(game.simonSeq);
     }
 
@@ -92,6 +94,21 @@
         game.simonSeq = [];
 
 
+    }
+
+    function lightUp(array) {
+        array.forEach(function (element,i) {
+            if (element == 1){
+                $("#blue").animate
+            } else if (element == 2) {
+                console.log($("#red"));
+            } else if (element == 3) {
+                console.log($("#orange"));
+            } else if (element == 4) {
+                console.log($("#yellow"));
+            }
+
+        })
     }
 
 
