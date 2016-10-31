@@ -9,15 +9,10 @@
 </head>
 <body class="container">
     <h1>Simple Simon</h1>
-    <div class="container buttonContainer">
-        <div class="row">
-            <div class="col-md-6 blue tile"></div>
-            <div class="col-md-6 red tile"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 orange tile"></div>
-            <div class="col-md-6 yellow tile"></div>
-        </div>
+            <button id="blue" class="tile"></button>
+            <button id="red" class="tile"></button>
+            <button id="orange" class="tile"></button>
+            <button id="yellow" class="tile"></button>
     </div>
 
 
@@ -29,5 +24,16 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+    var userArray = [];
+    var simonArray = [];
+
+    var blue = $("#blue");
+    blue.click(function() {
+        userArray.push(1);
+        console.log(userArray);
+    })
+
+</script>
 </body>
 </html>

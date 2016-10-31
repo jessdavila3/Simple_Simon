@@ -1,21 +1,15 @@
-.red {
+#red {
     background-color: red;
 }
 
-.blue {
+#blue {
     background-color: blue;
 }
 
-.yellow {
+#yellow {
     background-color: yellow;
 }
 
-.orange {
+#orange {
     background-color: orange;
-}
-
-.tile {
-    height:80px;
-    width: 80px;
-    padding:5%;
 }
