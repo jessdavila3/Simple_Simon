@@ -73,7 +73,7 @@
     function randomPad() {
         var random = Math.floor(Math.random() * 4) + 1;
         game.simonSeq.push(random);
-        lightUp(random);
+        setInterval(lightUp(random),1000);
         console.log(game.simonSeq);
     }
 
@@ -104,7 +104,10 @@
     }
 
     function lightUp(data) {
-            $("[value="+data+"]").addClass("lit");
+        $("[value="+data+"]").addClass("lit");
+    }
+    function lightDown(data) {
+        $("[value="+data+"]").removeClass("lit");
     }
 
 
