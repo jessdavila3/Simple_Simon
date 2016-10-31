@@ -63,7 +63,11 @@
             if (game.userSeq[game.userSeq.length-1] == game.simonSeq[game.simonSeq.length-1]) {
                 newLevel();
                 console.log('equal');
+            } else if (game.userSeq[game.userSeq.length-1] !== game.simonSeq[game.simonSeq.length-1]) {
+                youLost();
             }
+        } else if (game.userSeq[game.userSeq.length-1] !== game.simonSeq[game.userSeq.length-1]) {
+            youLost();
         }
     }
     tiles.hover(
@@ -78,6 +82,12 @@
     function newLevel() {
         ++game.level;
         randomPad();
+        game.userSeq = [];
+    }
+
+    function youLost() {
+        alert('you lost');
+        game.start = false;
     }
 
 </script>
