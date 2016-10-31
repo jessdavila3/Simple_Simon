@@ -46,17 +46,21 @@
     });
 
     tiles.click(function() {
-        var tile = $(this);
-        var value = parseInt(this.value);
-        game.userSeq.push(value);
-        compare();
+        if (game.start) {
+            var tile = $(this);
+            var value = parseInt(this.value);
+            game.userSeq.push(value);
+            compare();
+        } else {
+            alert('press start');
+        }
 
     });
 
     function randomPad() {
         var random = Math.floor(Math.random() * 4) + 1;
         game.simonSeq.push(random);
-        lightUp(game.simonSeq);
+        setInterval(lightUp(game.simonSeq),1000);
         console.log(game.simonSeq);
     }
 
@@ -98,18 +102,12 @@
 
     function lightUp(array) {
         array.forEach(function (element,i) {
-            if (element == 1){
-                $("#blue").animate
-            } else if (element == 2) {
-                console.log($("#red"));
-            } else if (element == 3) {
-                console.log($("#orange"));
-            } else if (element == 4) {
-                console.log($("#yellow"));
-            }
+            console.log(element + "lightup");
+            $("[value="+element+"]").toggleClass('lit');
 
         })
     }
+
 
 
 </script>
