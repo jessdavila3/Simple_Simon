@@ -5,7 +5,11 @@
     <title>Simple Simon Minigame</title>
     <link rel="stylesheet" href="css/ss_styling.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <style>
+        .lit {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="container">
     <h1>Simple Simon</h1>
@@ -57,10 +61,19 @@
 
     });
 
+    tiles.hover(
+            function() {
+                $(this).addClass('lit');
+            },
+            function() {
+                $(this).removeClass('lit');
+            }
+    );
+
     function randomPad() {
         var random = Math.floor(Math.random() * 4) + 1;
         game.simonSeq.push(random);
-        setInterval(lightUp(game.simonSeq),1000);
+        lightUp(random);
         console.log(game.simonSeq);
     }
 
@@ -76,14 +89,6 @@
             youLost();
         }
     }
-    tiles.hover(
-            function() {
-                $(this).css('opacity', '1');
-            },
-            function() {
-                $(this).css('opacity', '.5');
-            }
-    );
 
     function newLevel() {
         ++game.level;
@@ -96,18 +101,11 @@
         game.start = false;
         game.userSeq = [];
         game.simonSeq = [];
-
-
     }
 
-    function lightUp(array) {
-        array.forEach(function (element,i) {
-            console.log(element + "lightup");
-            $("[value="+element+"]").toggleClass('lit');
-
-        })
+    function lightUp(data) {
+            $("[value="+data+"]").addClass("lit");
     }
-
 
 
 </script>
