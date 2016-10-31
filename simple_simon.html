@@ -43,7 +43,6 @@
     $("#start").click(function() {
         game.start = true;
         randomPad();
-        console.log(game.simonSeq);
     });
 
     tiles.click(function() {
@@ -56,12 +55,13 @@
 
     function randomPad() {
         game.simonSeq.push(Math.floor(Math.random() * 4) + 1);
+        console.log(game.simonSeq);
     }
 
     function compare() {
         if (game.userSeq.length == game.simonSeq.length) {
             if (game.userSeq[game.userSeq.length-1] == game.simonSeq[game.simonSeq.length-1]) {
-                game.level++;
+                newLevel();
                 console.log('equal');
             }
         }
@@ -74,6 +74,11 @@
                 $(this).css('opacity', '.5');
             }
     );
+
+    function newLevel() {
+        ++game.level;
+        randomPad();
+    }
 
 </script>
 </body>
