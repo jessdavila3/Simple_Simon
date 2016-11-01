@@ -9,7 +9,6 @@ var game = {
     userSeq: [],
     simonSeq: [],
     level: 0,
-    score: 0,
     start: false
 };
 
@@ -22,6 +21,31 @@ $("#start").click(function () {
     }
 });
 
+function newLevel() {
+    ++game.level;
+    randomPad();
+    game.userSeq = [];
+    lightUp(game.simonSeq);
+    $("#level").html("Level: " + game.level);
+}
+
+function randomPad() {
+    var random = Math.floor(Math.random() * 4) + 1;
+    game.simonSeq.push(random);
+    console.log(game.simonSeq);
+}
+
+function lightUp(data) {
+    var light = $.each(data, function (index, element) {
+        setTimeout(function () {
+            $("[value=" + element + "]").addClass("lit")
+        }, 1000);
+        setTimeout(function () {
+            $("[value=" + element + "]").removeClass("lit")
+        }, 2000)
+    })
+}
+
 tiles.click(function () {
     if (game.start) {
         var tile = $(this);
@@ -31,23 +55,7 @@ tiles.click(function () {
     } else {
         alert('press start');
     }
-
 });
-
-tiles.hover(
-    function () {
-        $(this).addClass('lit');
-    },
-    function () {
-        $(this).removeClass('lit');
-    }
-);
-
-function randomPad() {
-    var random = Math.floor(Math.random() * 4) + 1;
-    game.simonSeq.push(random);
-    console.log(game.simonSeq);
-}
 
 function compare() {
     if (game.userSeq.length == game.simonSeq.length) {
@@ -61,14 +69,6 @@ function compare() {
     }
 }
 
-function newLevel() {
-    ++game.level;
-    randomPad();
-    game.userSeq = [];
-    lightUp(game.simonSeq);
-    $("#level").html("Level: " + game.level);
-}
-
 function youLost() {
     alert('you lost');
     game.start = false;
@@ -77,17 +77,13 @@ function youLost() {
     game.level = 0;
 }
 
-function lightUp(data) {
-    var light = $.each(data, function (index, element) {
-        setTimeout(function () {
-            $("[value=" + element + "]").addClass("lit")
-        }, 2000);
-        setTimeout(function () {
-            $("[value=" + element + "]").removeClass("lit")
-        }, 4000)
-    })
-}
-
-var level = game.level;
+tiles.hover(
+    function () {
+        $(this).addClass('lit');
+    },
+    function () {
+        $(this).removeClass('lit');
+    }
+);
 
 
