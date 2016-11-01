@@ -57,7 +57,7 @@ function light(tile) {
 function lightUp(data) {
     var i = 0;
     var interval = setInterval(function() {
-        light(data);
+        light(data[i]);
         i++;
         if (i >= data.length) {
             clearInterval(interval);
