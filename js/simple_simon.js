@@ -8,17 +8,17 @@ var tiles = $('.tile');
 var game = {
     userSeq: [],
     simonSeq: [],
-    level: 1,
+    level: 0,
     score: 0,
     start: false
 };
 
-$("#start").click(function() {
+$("#start").click(function () {
     game.start = true;
-    randomPad();
+    newLevel();
 });
 
-tiles.click(function() {
+tiles.click(function () {
     if (game.start) {
         var tile = $(this);
         var value = parseInt(this.value);
@@ -31,10 +31,10 @@ tiles.click(function() {
 });
 
 tiles.hover(
-    function() {
+    function () {
         $(this).addClass('lit');
     },
-    function() {
+    function () {
         $(this).removeClass('lit');
     }
 );
@@ -42,19 +42,18 @@ tiles.hover(
 function randomPad() {
     var random = Math.floor(Math.random() * 4) + 1;
     game.simonSeq.push(random);
-    setInterval(lightUp(game.simonSeq),1000);
     console.log(game.simonSeq);
 }
 
 function compare() {
     if (game.userSeq.length == game.simonSeq.length) {
-        if (game.userSeq[game.userSeq.length-1] == game.simonSeq[game.simonSeq.length-1]) {
+        if (game.userSeq[game.userSeq.length - 1] == game.simonSeq[game.simonSeq.length - 1]) {
             newLevel();
             console.log('equal');
-        } else if (game.userSeq[game.userSeq.length-1] !== game.simonSeq[game.simonSeq.length-1]) {
+        } else if (game.userSeq[game.userSeq.length - 1] !== game.simonSeq[game.simonSeq.length - 1]) {
             youLost();
         }
-    } else if (game.userSeq[game.userSeq.length-1] !== game.simonSeq[game.userSeq.length-1]) {
+    } else if (game.userSeq[game.userSeq.length - 1] !== game.simonSeq[game.userSeq.length - 1]) {
         youLost();
     }
 }
@@ -63,6 +62,7 @@ function newLevel() {
     ++game.level;
     randomPad();
     game.userSeq = [];
+    lightUp(game.simonSeq);
 }
 
 function youLost() {
@@ -73,15 +73,17 @@ function youLost() {
 }
 
 function lightUp(data) {
-    data.forEach(function (element,index) {
-        // $("[value="+element+"]").addClass("lit");
-        setTimeout(function(){
-            $("[value="+element+"]").addClass("lit");
-        },1000)
+    var light = data.forEach(function (element, index) {
+        setTimeout(function () {
+            $("[value=" + element + "]").addClass("lit")
+        }, 2000);
+        setTimeout(function () {
+            $("[value=" + element + "]").removeClass("lit")
+        }, 4000)
     })
+    clearTimeout(light);
+}
+var level = game.level;
+$("#level").html("Level: " + level);
 
-}
-function lightDown(data) {
-    $("[value="+data+"]").removeClass("lit");
-}
 
