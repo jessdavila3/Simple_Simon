@@ -14,8 +14,12 @@ var game = {
 };
 
 $("#start").click(function () {
-    game.start = true;
-    newLevel();
+    if (game.start) {
+        alert('game has already started');
+    } else {
+        game.start = true;
+        newLevel();
+    }
 });
 
 tiles.click(function () {
@@ -49,7 +53,6 @@ function compare() {
     if (game.userSeq.length == game.simonSeq.length) {
         if (game.userSeq[game.userSeq.length - 1] == game.simonSeq[game.simonSeq.length - 1]) {
             newLevel();
-            console.log('equal');
         } else if (game.userSeq[game.userSeq.length - 1] !== game.simonSeq[game.simonSeq.length - 1]) {
             youLost();
         }
@@ -63,6 +66,7 @@ function newLevel() {
     randomPad();
     game.userSeq = [];
     lightUp(game.simonSeq);
+    $("#level").html("Level: " + game.level);
 }
 
 function youLost() {
@@ -70,10 +74,11 @@ function youLost() {
     game.start = false;
     game.userSeq = [];
     game.simonSeq = [];
+    game.level = 0;
 }
 
 function lightUp(data) {
-    var light = data.forEach(function (element, index) {
+    var light = $.each(data, function (index, element) {
         setTimeout(function () {
             $("[value=" + element + "]").addClass("lit")
         }, 2000);
@@ -81,9 +86,8 @@ function lightUp(data) {
             $("[value=" + element + "]").removeClass("lit")
         }, 4000)
     })
-    clearTimeout(light);
 }
+
 var level = game.level;
-$("#level").html("Level: " + level);
 
 
