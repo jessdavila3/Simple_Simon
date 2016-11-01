@@ -50,6 +50,7 @@ function randomPad() {
 
 function light(tile) {
     var $tile = $('[value='+tile+']').addClass('lit');
+    playTone(tile);
     window.setTimeout(function() {
         $tile.removeClass('lit');
     }, 500);
@@ -66,8 +67,10 @@ function lightUp(data) {
     },800);
 }
 
-function playTone(tile) {
-
+function playTone() {
+    var audio = $('<audio autoplay></audio>');
+    audio.append('<source src="../data/longred-louder.wav" type="audio/wav">');
+    $("#audio").html(audio)
 }
 
 tiles.click(function () {
