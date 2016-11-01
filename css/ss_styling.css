@@ -23,3 +23,11 @@
 .lit {
     background-color: white;
 }
+
+#start {
+    font-size: 2em;
+}
+
+#level {
+    font-size: 1.5em;
+}
