@@ -74,8 +74,10 @@ function youLost() {
 
 function lightUp(data) {
     data.forEach(function (element,index) {
-        $("[value="+element+"]").addClass("lit");
-
+        // $("[value="+element+"]").addClass("lit");
+        setTimeout(function(){
+            $("[value="+element+"]").addClass("lit");
+        },1000)
     })
 
 }
