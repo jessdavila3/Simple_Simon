@@ -42,7 +42,7 @@ tiles.hover(
 function randomPad() {
     var random = Math.floor(Math.random() * 4) + 1;
     game.simonSeq.push(random);
-    setInterval(lightUp(random),1000);
+    setInterval(lightUp(game.simonSeq),1000);
     console.log(game.simonSeq);
 }
 
@@ -73,7 +73,11 @@ function youLost() {
 }
 
 function lightUp(data) {
-    $("[value="+data+"]").addClass("lit");
+    data.forEach(function (element,index) {
+        $("[value="+element+"]").addClass("lit");
+
+    })
+
 }
 function lightDown(data) {
     $("[value="+data+"]").removeClass("lit");
