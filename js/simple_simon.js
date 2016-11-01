@@ -22,10 +22,11 @@ $("#start").click(function () {
 });
 
 function newLevel() {
+    var sequence = game.simonSeq //might cause issues with randompad called later
     ++game.level;
     randomPad();
     game.userSeq = [];
-    lightUp(game.simonSeq);
+    lightUp(sequence);
     $("#level").html("Level: " + game.level);
 }
 
@@ -35,7 +36,7 @@ function randomPad() {
     console.log(game.simonSeq);
 }
 
-function lightUp(data) {
+/*function lightUp(data) {
     var light = $.each(data, function (index, element) {
         setTimeout(function () {
             $("[value=" + element + "]").addClass("lit")
@@ -43,7 +44,26 @@ function lightUp(data) {
         setTimeout(function () {
             $("[value=" + element + "]").removeClass("lit")
         }, 2000)
+        console.log("index:"+index+"    element:"+element);
     })
+}*/
+
+function light(tile) {
+    var $tile = $('[value='+tile+']').addClass('lit');
+    window.setTimeout(function() {
+        $tile.removeClass('lit');
+    }, 300);
+}
+function lightUp(data) {
+    var i = 0;
+    var interval = setInterval(function() {
+        light(data[i]);
+        i++;
+        if (i >= data.length) {
+            clearInterval(interval);
+        }
+
+    },600);
 }
 
 tiles.click(function () {
@@ -85,5 +105,7 @@ tiles.hover(
         $(this).removeClass('lit');
     }
 );
+
+
 
 
