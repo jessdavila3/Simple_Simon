@@ -69,8 +69,8 @@ function lightUp(data) {
 
 function playTone() {
     var audio = $('<audio autoplay></audio>');
-    audio.append('<source src="../data/longred-louder.wav" type="audio/wav">');
-    $("#audio").html(audio)
+    audio.append('<source src="longred-louder.wav" type="audio/wav">');
+    $("#audio").html(audio);
 }
 
 tiles.click(function () {
