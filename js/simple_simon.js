@@ -66,6 +66,10 @@ function lightUp(data) {
     },800);
 }
 
+function playTone(tile) {
+
+}
+
 tiles.click(function () {
     if (game.start) {
         var tile = $(this);
