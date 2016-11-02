@@ -22,11 +22,10 @@ $("#start").click(function () {
 });
 
 function newLevel() {
-    var sequence = game.simonSeq //might cause issues with randompad called later
     ++game.level;
     randomPad();
     game.userSeq = [];
-    lightUp(sequence);
+    lightUp(game.simonSeq);
     $("#level").html("Level: " + game.level);
 }
 
@@ -36,24 +35,14 @@ function randomPad() {
     console.log(game.simonSeq);
 }
 
-/*function lightUp(data) {
- var light = $.each(data, function (index, element) {
- setTimeout(function () {
- $("[value=" + element + "]").addClass("lit")
- }, 1000);
- setTimeout(function () {
- $("[value=" + element + "]").removeClass("lit")
- }, 2000)
- console.log("index:"+index+"    element:"+element);
- })
- }*/
-
 function light(tile) {
     var $tile = $('[value='+tile+']').addClass('lit');
+    playTone(tile);
     window.setTimeout(function() {
         $tile.removeClass('lit');
     }, 500);
 }
+
 function lightUp(data) {
     var i = 0;
     var interval = setInterval(function() {
@@ -64,6 +53,12 @@ function lightUp(data) {
         }
 
     },800);
+}
+
+function playTone() {
+    var audio = $('<audio autoplay></audio>');
+    audio.append('<source src="longred-louder.wav" type="audio/wav">');
+    $("#audio").html(audio);
 }
 
 tiles.click(function () {
@@ -105,6 +100,5 @@ tiles.hover(
         $(this).removeClass('lit');
     }
 );
-
 
 
