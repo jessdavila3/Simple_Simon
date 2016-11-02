@@ -48,7 +48,7 @@ function light(tile) { //adds the lit class to tile that is pushed to it
     playTone(tile);
     window.setTimeout(function () {
         $tile.removeClass('lit');
-    }, 500);
+    }, 400);
 }
 
 function lightUp(data) { // passes each tile in simonSeq in a timed interval to light function.
@@ -59,13 +59,12 @@ function lightUp(data) { // passes each tile in simonSeq in a timed interval to 
         if (i >= data.length) {
             clearInterval(interval);
         }
-    }, 800);
+    }, 700);
 }
 
 function playTone(tile) { //plays a tone in light function
     var audio = $('<audio autoplay></audio>');
     audio.html('<source src="data/808-Tom' + tile + '.wav" type="audio/wav">');
-    $("#audio").html(audio);
 }
 
 tiles.click(function () { // when tile is clicked, value is pushed to userSeq.
