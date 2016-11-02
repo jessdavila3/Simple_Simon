@@ -34,3 +34,14 @@
 #level {
     font-size: 1.5em;
 }
+
+#buttonDisplay {
+    margin-left: 30%;
+    margin-top: 15%;
+}
+
+#infoDisplay {
+    position: relative;
+    left:5%;
+    bottom:5%;
+}
