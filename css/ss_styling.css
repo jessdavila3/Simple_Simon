@@ -1,25 +1,26 @@
+#blue {
+    background-color: blue;
+}
+
 #red {
     background-color: red;
 }
 
-#blue {
-    background-color: blue;
+#orange {
+    background-color: orange;
+    clear: left;
 }
 
 #green {
     background-color: green;
 }
 
-#orange {
-    background-color: orange;
-}
-
 .tile {
     height: 100px;
     width: 100px;
     opacity:.5;
-    margin: 0;
-    padding: 0;
+    margin: 1%;
+    float: left;
 }
 
 .lit {
