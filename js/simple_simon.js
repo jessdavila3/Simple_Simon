@@ -76,7 +76,7 @@ tiles.click(function () {
         game.userSeq.push(value);
         compare();
     } else {
-        alert('press start');
+        $("#status").html("Press start");
     }
 });
 
