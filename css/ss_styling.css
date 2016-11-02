@@ -1,3 +1,7 @@
+.container {
+    font-family: 'Lato', sans-serif;
+}
+
 #blue {
     background-color: blue;
 }
@@ -16,8 +20,8 @@
 }
 
 .tile {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     opacity:.5;
     margin: 1%;
     float: left;
@@ -36,8 +40,8 @@
 }
 
 #buttonDisplay {
-    margin-left: 30%;
-    margin-top: 15%;
+    margin-left: 35%;
+    margin-top: 10%;
 }
 
 #infoDisplay {
