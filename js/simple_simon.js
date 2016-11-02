@@ -22,7 +22,6 @@ start.click(function () { //makes sure the game hasn't starte yet, then begins a
         colorTiles();
         newLevel();
         $("#status").html("");
-
     }
 });
 
