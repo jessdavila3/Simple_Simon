@@ -42,6 +42,7 @@
 
 h3#start {
     font-size: 3em;
+    display: inline;
 }
 
 #level {
@@ -57,4 +58,5 @@ h3#start {
     position: relative;
     left: 5%;
     bottom: 5%;
+    display: inline;
 }
