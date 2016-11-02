@@ -3,7 +3,8 @@
  */
 "use strict";
 
-var tiles = $('.tile');
+var tiles = $('div.tile'),
+    start = $("#start");
 
 var game = {
     userSeq: [],
@@ -12,14 +13,21 @@ var game = {
     start: false
 };
 
-$("#start").click(function () {
+start.click(function () {
     if (game.start) {
         alert('game has already started');
     } else {
         game.start = true;
+        colorTiles();
         newLevel();
+        $("#status").html("");
+
     }
 });
+
+function colorTiles() {
+    tiles.removeClass("gray");
+}
 
 function newLevel() {
     ++game.level;
@@ -84,7 +92,7 @@ function compare() {
 }
 
 function youLost() {
-    alert('you lost');
+    $("#status").html("You Lose");
     game.start = false;
     game.userSeq = [];
     game.simonSeq = [];
@@ -99,5 +107,15 @@ tiles.hover(
         $(this).removeClass('lit');
     }
 );
+
+start.hover(
+    function() {
+        $(this).css("opacity",".7");
+    },
+    function () {
+        $(this).css("opacity","1");
+    }
+);
+
 
 
