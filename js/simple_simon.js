@@ -18,6 +18,7 @@ start.click(function () {
         alert('game has already started');
     } else {
         game.start = true;
+        start.fadeOut();
         colorTiles();
         newLevel();
         $("#status").html("");
@@ -93,6 +94,7 @@ function compare() {
 
 function youLost() {
     $("#status").html("You Lose");
+    start.fadeIn();
     game.start = false;
     game.userSeq = [];
     game.simonSeq = [];

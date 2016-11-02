@@ -1,5 +1,6 @@
 .container {
     font-family: 'Lato', sans-serif;
+    background-color: azure;
 }
 
 .blue {
@@ -40,7 +41,7 @@ h3#start {
 }
 
 #level {
-    font-size: 1.2em;
+    font-size: 2em;
 }
 
 #buttonDisplay {
