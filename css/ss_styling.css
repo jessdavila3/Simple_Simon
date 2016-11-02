@@ -31,7 +31,7 @@
 .tile {
     height: 150px;
     width: 150px;
-    opacity:.5;
+    opacity: .5;
     margin: 1%;
     float: left;
 }
@@ -55,6 +55,6 @@ h3#start {
 
 #infoDisplay {
     position: relative;
-    left:5%;
-    bottom:5%;
+    left: 5%;
+    bottom: 5%;
 }

@@ -6,14 +6,14 @@
 var tiles = $('div.tile'),
     start = $("#start");
 
-var game = {
+var game = { // game object holds most of the working game info that is needed
     userSeq: [],
     simonSeq: [],
     level: 0,
     start: false
 };
 
-start.click(function () {
+start.click(function () { //makes sure the game hasn't starte yet, then begins a new game.
     if (game.start) {
         alert('game has already started');
     } else {
@@ -26,12 +26,12 @@ start.click(function () {
     }
 });
 
-function colorTiles() {
+function colorTiles() { //turns gray tiles to colored tiles to begin the game.
     tiles.removeClass("gray");
     tiles.addClass("shadow");
 }
 
-function newLevel() {
+function newLevel() { // ups level counter and resets userSeq to begin next round
     ++game.level;
     randomPad();
     game.userSeq = [];
@@ -39,13 +39,12 @@ function newLevel() {
     $("#level").html("Level: " + game.level);
 }
 
-function randomPad() {
+function randomPad() { //function to push a random number form 1-4 to simonSeq.
     var random = Math.floor(Math.random() * 4) + 1;
     game.simonSeq.push(random);
-    console.log(game.simonSeq);
 }
 
-function light(tile) {
+function light(tile) { //adds the lit class to tile that is pushed to it
     var $tile = $('[data-value=' + tile + ']').addClass('lit');
     // playTone(tile);
     window.setTimeout(function () {
@@ -53,7 +52,7 @@ function light(tile) {
     }, 500);
 }
 
-function lightUp(data) {
+function lightUp(data) { // passes each tile in simonSeq in a timed interval to light function.
     var i = 0;
     var interval = setInterval(function () {
         light(data[i]);
@@ -64,13 +63,13 @@ function lightUp(data) {
     }, 800);
 }
 
-function playTone() {
+function playTone() { //plays a tone in light function
     var audio = $('<audio autoplay></audio>');
     audio.append('<source src="../data/longred-louder.wav" type="audio/wav">');
     $("#audio").html(audio);
 }
 
-tiles.click(function () {
+tiles.click(function () { // when tile is clicked, value is pushed to userSeq.
     if (game.start) {
         var tile = $(this).data('value');
         var value = parseInt(tile);
@@ -81,7 +80,7 @@ tiles.click(function () {
     }
 });
 
-function compare() {
+function compare() { //with each click of a tile, a comparison is made between both seq arrays
     if (game.userSeq.length == game.simonSeq.length) {
         if (game.userSeq[game.userSeq.length - 1] == game.simonSeq[game.simonSeq.length - 1]) {
             newLevel();
@@ -93,7 +92,7 @@ function compare() {
     }
 }
 
-function youLost() {
+function youLost() { // rest counters and allow user to start again
     $("#status").html("You Lose");
     start.fadeIn();
     game.start = false;
@@ -112,11 +111,11 @@ tiles.hover(
 );
 
 start.hover(
-    function() {
-        $(this).css("opacity",".7");
+    function () {
+        $(this).css("opacity", ".7");
     },
     function () {
-        $(this).css("opacity","1");
+        $(this).css("opacity", "1");
     }
 );
 
