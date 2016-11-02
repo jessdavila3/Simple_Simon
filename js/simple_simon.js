@@ -28,6 +28,7 @@ start.click(function () {
 
 function colorTiles() {
     tiles.removeClass("gray");
+    tiles.addClass("shadow");
 }
 
 function newLevel() {
