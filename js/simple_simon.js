@@ -36,8 +36,8 @@ function randomPad() {
 }
 
 function light(tile) {
-    var $tile = $('[value=' + tile + ']').addClass('lit');
-    playTone(tile);
+    var $tile = $('[data-value=' + tile + ']').addClass('lit');
+    // playTone(tile);
     window.setTimeout(function () {
         $tile.removeClass('lit');
     }, 500);
@@ -62,8 +62,8 @@ function playTone() {
 
 tiles.click(function () {
     if (game.start) {
-        var tile = $(this);
-        var value = parseInt(this.value);
+        var tile = $(this).data('value');
+        var value = parseInt(tile);
         game.userSeq.push(value);
         compare();
     } else {
