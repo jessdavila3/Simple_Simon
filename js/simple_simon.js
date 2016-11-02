@@ -46,7 +46,7 @@ function randomPad() { //function to push a random number form 1-4 to simonSeq.
 
 function light(tile) { //adds the lit class to tile that is pushed to it
     var $tile = $('[data-value=' + tile + ']').addClass('lit');
-    // playTone(tile);
+    playTone(tile);
     window.setTimeout(function () {
         $tile.removeClass('lit');
     }, 500);
@@ -63,15 +63,16 @@ function lightUp(data) { // passes each tile in simonSeq in a timed interval to 
     }, 800);
 }
 
-function playTone() { //plays a tone in light function
+function playTone(tile) { //plays a tone in light function
     var audio = $('<audio autoplay></audio>');
-    audio.append('<source src="../data/longred-louder.wav" type="audio/wav">');
+    audio.html('<source src="data/808-Tom' + tile + '.wav" type="audio/wav">');
     $("#audio").html(audio);
 }
 
 tiles.click(function () { // when tile is clicked, value is pushed to userSeq.
     if (game.start) {
         var tile = $(this).data('value');
+        light(tile);
         var value = parseInt(tile);
         game.userSeq.push(value);
         compare();
