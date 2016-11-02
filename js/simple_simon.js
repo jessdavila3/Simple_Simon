@@ -36,28 +36,27 @@ function randomPad() {
 }
 
 function light(tile) {
-    var $tile = $('[value='+tile+']').addClass('lit');
+    var $tile = $('[value=' + tile + ']').addClass('lit');
     playTone(tile);
-    window.setTimeout(function() {
+    window.setTimeout(function () {
         $tile.removeClass('lit');
     }, 500);
 }
 
 function lightUp(data) {
     var i = 0;
-    var interval = setInterval(function() {
+    var interval = setInterval(function () {
         light(data[i]);
         i++;
         if (i >= data.length) {
             clearInterval(interval);
         }
-
-    },800);
+    }, 800);
 }
 
 function playTone() {
     var audio = $('<audio autoplay></audio>');
-    audio.append('<source src="longred-louder.wav" type="audio/wav">');
+    audio.append('<source src="../data/longred-louder.wav" type="audio/wav">');
     $("#audio").html(audio);
 }
 
